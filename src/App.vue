@@ -9,7 +9,7 @@
       <form @submit.prevent="submitForm()">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
-          <input type="name" v-model="formValues.name" class="form-control" id="name">
+          <input type="name" v-model.trim.lazy="formValues.name" class="form-control" id="name">
         </div>
         <div class="mb-3">
           <label for="profile" class="form-label">Profile Summary</label>
@@ -90,9 +90,15 @@
               <label class="form-check-label" for="6-10">6-10</label>
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age" class="form-control" />
+          </div>
+
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
       </form>
     </div>
   </div>
@@ -111,12 +117,13 @@ export default {
         remoteWork: 'no',
         skillSet: [],
         yearsOfExperience: '',
+        age: null,
       }
     }
   },
   methods: {
-    submitForm(){
-      console.log("Form values" , this.formValues);
+    submitForm() {
+      console.log("Form values", this.formValues);
     }
   },
 }
