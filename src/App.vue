@@ -2,7 +2,8 @@
   <div>
     {{ greet }} {{ name }}
   </div>
-  <div v-text="channel"></div>
+  <div v-html="channel"></div>
+  <div v-html="hack"></div>
 </template>
 
 <script>
@@ -12,7 +13,8 @@ export default {
     return {
       name: "Divyesh",
       greet: "Hello",
-      channel: 'Divyesh Youtube'
+      channel: '<b>Divyesh Youtube</b>',
+      hack: `<a href="#" onclick="alert('hacked!')">Win a prize!</a>`,
     }
   },
 }
