@@ -9,6 +9,8 @@
     <h2>Youtube</h2>
     <h2>Vue 3</h2>
   </template>
+
+  <h2 v-show="showElement">Using v-show</h2>
 </template>
 
 <script>
@@ -18,6 +20,7 @@ export default {
     return {
       num: 12,
       display: true,
+      showElement: false,
 
     }
   },
