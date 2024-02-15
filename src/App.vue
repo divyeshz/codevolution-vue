@@ -1,22 +1,43 @@
 <template>
-  <h2>{{ name }}</h2>
   <div>
-    <button @click="changeName($event), increment(1, $event)">Change Name and Increment 1!</button>
-    <button @click="name = 'Neel'">Change Name!</button>
-    <button @mouseover="name = 'Neel'">Change Name!</button>
+    <pre>
+      {{ JSON.stringify(formValues, null, 2) }}
+    </pre>
   </div>
+  <div class="container">
+    <div class="row">
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="name" v-model="formValues.name" class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+          <label for="profile" class="form-label">Profile Summary</label>
+          <textarea id="profile" v-model="formValues.profileSummary" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <select id="country" class="form-select" v-model="formValues.country">
+            <option value="">Select Country</option>
+            <option value="IND">India</option>
+            <option value="PAK">Pakistan</option>
+            <option value="CHINA">China</option>
+          </select>
+        </div>
 
-  <h2>{{ count }}</h2>
-  <div>
-    <button @click="count++">Increment</button>
-    <button @click="count--">Decrement</button>
-  </div>
-  <hr>
-  <div>
-    <button @click="increment(1)">Method Increment 1</button>
-    <button @click="increment(5)">Method Increment 5</button>
-    <button @click="decrement(2)">Method Decrement 2</button>
-    <button @click="decrement(5)">Method Decrement 5</button>
+        <div class="mb-3">
+          <label for="job-location" class="form-label">Job Location</label>
+          <select id="job-location" multiple class="form-select" v-model="formValues.jobLocation">
+            <option value="IND">India</option>
+            <option value="PAK">Pakistan</option>
+            <option value="CHINA">China</option>
+          </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -25,20 +46,16 @@ export default {
   name: 'App',
   data() {
     return {
-      name: 'Divyesh',
-      count: 0,
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '',
+        jobLocation: [],
+      }
     }
   },
   methods: {
-    changeName() {
-      this.name = 'Neel'
-    },
-    increment(num) {
-      this.count += num
-    },
-    decrement(num) {
-      this.count -= num
-    }
+
   },
 }
 </script>
@@ -48,7 +65,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
