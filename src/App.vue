@@ -1,6 +1,7 @@
 <template>
   <h2>{{ name }}</h2>
   <div>
+    <button @click="changeName($event), increment(1, $event)">Change Name and Increment 1!</button>
     <button @click="name = 'Neel'">Change Name!</button>
     <button @mouseover="name = 'Neel'">Change Name!</button>
   </div>
