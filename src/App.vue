@@ -4,6 +4,8 @@
   </div>
   <div v-html="channel"></div>
   <div v-html="hack"></div>
+  <h2 :id="headingId">Heading</h2>
+  <button :disabled="isDisabled">Bind</button>
 </template>
 
 <script>
@@ -15,6 +17,8 @@ export default {
       greet: "Hello",
       channel: '<b>Divyesh Youtube</b>',
       hack: `<a href="#" onclick="alert('hacked!')">Win a prize!</a>`,
+      headingId: 'heading',
+      isDisabled: false,
     }
   },
 }
