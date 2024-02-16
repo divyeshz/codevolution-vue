@@ -5,6 +5,14 @@
     <button @click="volume += 2">Increase</button>
     <button @click="volume -= 2">Decrease</button>
   </div>
+
+  <input type="text" v-model="movie" name="" id="">
+  <input type="text" v-model="movieInfo.title" name="" id="">
+  <input type="text" v-model="movieInfo.actor" name="" id="">
+
+  <div>
+    <button @click="movieList = movieList.concat(['Wonder Women'])">Add Movie</button>
+  </div>
 </template>
 
 <script>
@@ -12,7 +20,15 @@ export default {
   name: 'App',
   data() {
     return {
-      volume: 0
+      volume: 0,
+      movie: 'Batman',
+      movieInfo: {
+        title: '',
+        actor: ''
+      },
+      movieList: [
+        'Batman', 'Superman'
+      ]
     }
   },
   methods: {
@@ -24,6 +40,24 @@ export default {
       if (newValue > oldValue && newValue === 16) {
         alert('damage');
       }
+    },
+    movie: {
+      handler(newValue) {
+        console.log(`Call Api with movie name = ${newValue}  `);
+      },
+      immediate: true,
+    },
+    movieInfo: {
+      handler(newValue) {
+        console.log(`Call Api with movie title = ${newValue.title} and actor = ${newValue.actor}`);
+      },
+      deep: true,
+    },
+    movieList: {
+      handler(newValue) {
+        console.log(`Updated list ${newValue}`);
+      },
+      // deep: true,
     }
   },
 }
